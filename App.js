@@ -1,19 +1,29 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StatusBar,
+} from 'react-native';
 
-export default function App() {
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import  { AppNavigator } from './src/navigation';
+// import { EvaIconsPack } from '@ui-kitten/eva-icons';
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <ApplicationProvider {...eva} theme={eva.light}>
+       {/* <IconRegistry icons={EvaIconsPack} /> import use icon Kitten UI */} 
+      <StatusBar barStyle="dark-content" />
+      <AppNavigator />
+    </ApplicationProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
