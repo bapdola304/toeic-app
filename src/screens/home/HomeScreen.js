@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import HomeComponent from '../../component/home/Home.component';
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -8,16 +9,9 @@ class HomeScreen extends Component {
         };
     }
 
-    onNavigation = () => {
-        console.log(this.props.navigation.navigate('Oder'));
-        
-    }
-
     render() {
         return (
-            <TouchableOpacity onPress={this.onNavigation}>
-                <Text>HomeScreen</Text>
-            </TouchableOpacity>
+            <HomeComponent {...this.props}/>
         );
     }
 }

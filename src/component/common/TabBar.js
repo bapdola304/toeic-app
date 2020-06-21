@@ -18,7 +18,9 @@ const Wrapper = styled.View`
   padding-horizontal: ${p => p.verticalPadding};
   background-color: ${p => p.tabBarBackground};
   ${p => p.shadow && SHADOW};
-  display: ${p => p.tabBarVisible}
+  display: ${p => p.tabBarVisible};
+  border-top-right-radius: 20;
+  border-top-left-radius: 20;
 `;
 
 const TabButton = styled.TouchableOpacity`

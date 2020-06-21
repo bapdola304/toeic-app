@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { HeaderNavigation } from '../../component/common/TopNavigation';
+import PartDetailComponent from '../../component/home/PartDetail.component';
 
-class DetailScreen extends Component {
-  static navigationOptions = {
-    tabBarVisible: false
-  }
+class PartDetailScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,12 +13,12 @@ class DetailScreen extends Component {
   render() {
     return (
       <>
-        <HeaderNavigation navigation = {this.props.navigation}/>
-        <Text>Detail</Text>
+        <HeaderNavigation {...this.props}/>
+        <PartDetailComponent />
       </>
     );
   }
 }
 
-export default DetailScreen;
+export default PartDetailScreen;
 

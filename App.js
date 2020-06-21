@@ -20,7 +20,7 @@ const App = () => {
   return (
     <ApplicationProvider {...eva} theme={eva.light}>
        {/* <IconRegistry icons={EvaIconsPack} /> import use icon Kitten UI */} 
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="#65C8D0" backgroundColor = '#17A1B0' />
       <AppNavigator />
     </ApplicationProvider>
   );
