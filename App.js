@@ -13,16 +13,18 @@ import {
 
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
-import  { AppNavigator } from './src/navigation';
-// import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { AppNavigator } from './src/navigation';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 const App = () => {
   return (
-    <ApplicationProvider {...eva} theme={eva.light}>
-       {/* <IconRegistry icons={EvaIconsPack} /> import use icon Kitten UI */} 
-      <StatusBar barStyle="#65C8D0" backgroundColor = '#17A1B0' />
-      <AppNavigator />
-    </ApplicationProvider>
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <StatusBar barStyle="#65C8D0" backgroundColor='#17A1B0' />
+        <AppNavigator />
+      </ApplicationProvider>
+    </>
   );
 };
 

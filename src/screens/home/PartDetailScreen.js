@@ -14,7 +14,7 @@ class PartDetailScreen extends Component {
     return (
       <>
         <HeaderNavigation {...this.props}/>
-        <PartDetailComponent />
+        <PartDetailComponent {...this.props}/>
       </>
     );
   }

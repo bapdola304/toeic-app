@@ -44,13 +44,13 @@ const TabNavigator = () => {
   const [count, setCount] = useState(true);
   return (
     <Navigator
-      initialRouteName='Home'
-      screenOptions={({route}) => {
+      initialRouteName='Traing Test'
+      screenOptions={({ route }) => {
         const currentRoute = route.state && route.state.routes[route.state.index];
         const isShow = currentRoute && isOneOfRootRoutes(currentRoute);
-        if(isShow !== undefined){
+        if (isShow !== undefined) {
           setCount(isShow);
-        }        
+        }
       }}
       tabBarOptions={{
         activeTintColor: "#2F7C6E",
@@ -69,16 +69,24 @@ const TabNavigator = () => {
       }}>
       <Screen
         name='Home'
-        component={HomePageNavigator}
-        options={tabBarIconCommon('home')} />
-      <Screen
-        name='Blogs'
         component={OrdersScreen}
-        options={tabBarIconCommon('edit')} />
+        options={tabBarIconCommon('home')}
+      />
+      <Screen
+        name='Traing Test'
+        component={HomePageNavigator}
+        options={tabBarIconCommon('edit')}
+      />
+      <Screen
+        name='Book'
+        component={OrdersScreen}
+        options={tabBarIconCommon('book')}
+      />
       <Screen
         name='Account'
         component={OrdersScreen}
-        options={tabBarIconCommon('user')} />
+        options={tabBarIconCommon('user')}
+      />
 
     </Navigator>
   )

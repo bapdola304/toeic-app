@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {
     Animated,
     Platform,
-    StyleSheet,
     Text,
     View,
 } from 'react-native';
 import Menu from './Menu'
 import homeBanner from '../../../assets/images/bannerImage.png';
+import { HomeStyles } from './style/home.style';
+import { HOME_NAV } from '../../util/navigationName';
 
 const HEADER_MAX_HEIGHT = 210;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 48;
@@ -27,16 +28,15 @@ export default class HomeComponent extends Component {
     }
 
     _renderScrollViewContent() {
-        const data = Array.from({ length: 30 });
         return (
-            <View style={styles.scrollViewContent}>
+            <View style={HomeStyles.scrollViewContent}>
                 <Menu onPress={this.onPressItem} />
             </View>
         );
     }
 
     onPressItem = () => {
-        this.props.navigation.navigate('PartDetail');
+        this.props.navigation.navigate(HOME_NAV.PART_DETAIl);
     }
 
     getAnimateValue = () => {
@@ -91,9 +91,9 @@ export default class HomeComponent extends Component {
         } = this.getAnimateValue();
 
         return (
-            <View style={styles.fill}>
+            <View style={HomeStyles.fill}>
                 <Animated.ScrollView
-                    style={styles.fill}
+                    style={HomeStyles.fill}
                     scrollEventThrottle={1}
                     onScroll={Animated.event(
                         [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
@@ -112,13 +112,13 @@ export default class HomeComponent extends Component {
                 <Animated.View
                     pointerEvents="none"
                     style={[
-                        styles.header,
+                        HomeStyles.header,
                         { transform: [{ translateY: headerTranslate }] },
                     ]}
                 >
                     <Animated.Image
                         style={[
-                            styles.backgroundImage,
+                            HomeStyles.backgroundImage,
                             {
                                 opacity: imageOpacity,
                                 transform: [{ translateY: imageTranslate }],
@@ -129,7 +129,7 @@ export default class HomeComponent extends Component {
                 </Animated.View>
                 <Animated.View
                     style={[
-                        styles.bar,
+                        HomeStyles.bar,
                         {
                             transform: [
                                 { scale: titleScale },
@@ -138,67 +138,9 @@ export default class HomeComponent extends Component {
                         },
                     ]}
                 >
-                    {/* <Text style={styles.title}>Toeic Tesing</Text> */}
+                    {/* <Text style={HomeStyles.title}>Toeic Tesing</Text> */}
                 </Animated.View>
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    fill: {
-        flex: 1,
-    },
-    content: {
-        flex: 1,
-    },
-    header: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#37C1CB',
-        overflow: 'hidden',
-        height: HEADER_MAX_HEIGHT,
-        borderBottomRightRadius: 70,
-        borderBottomLeftRadius: 40
-    },
-    backgroundImage: {
-        position: 'absolute',
-        top: 20,
-        // left: 0,
-        // right: 0,
-        width: '90%',
-        height: HEADER_MAX_HEIGHT,
-        // resizeMode: 'cover',
-    },
-    bar: {
-        backgroundColor: 'transparent',
-        marginTop: Platform.OS === 'ios' ? 28 : 15,
-        height: 32,
-        // alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-    },
-    title: {
-        color: 'white',
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginLeft: 15
-    },
-    scrollViewContent: {
-        // iOS uses content inset, which acts like padding.
-        paddingTop: Platform.OS !== 'ios' ? HEADER_MAX_HEIGHT : 0,
-        paddingHorizontal: 10,
-    },
-    row: {
-        height: 40,
-        margin: 16,
-        backgroundColor: '#D3D3D3',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

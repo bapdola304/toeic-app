@@ -1,4 +1,4 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React from "react";
 import { Animated, BackHandler, View } from "react-native";
 import styled, { css } from "styled-components/native";
@@ -13,14 +13,14 @@ const Wrapper = styled.View`
   flex-direction: row;
   width: 100%;
   elevation: 2;
-  padding-bottom: ${BOTTOM_PADDING};
-  padding-top: ${p => p.topPadding};
-  padding-horizontal: ${p => p.verticalPadding};
+  padding-bottom: ${BOTTOM_PADDING}px;
+  padding-top: ${p => p.topPadding}px;
+  padding-horizontal: ${p => p.verticalPadding}px;
   background-color: ${p => p.tabBarBackground};
   ${p => p.shadow && SHADOW};
   display: ${p => p.tabBarVisible};
-  border-top-right-radius: 20;
-  border-top-left-radius: 20;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 `;
 
 const TabButton = styled.TouchableOpacity`
@@ -28,23 +28,23 @@ const TabButton = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 200;
-  padding-vertical: 10;
+  border-radius: 200px;
+  padding-vertical: 10px;
   flex-grow: ${p => (p.focused ? p.labelLength / 10 + 1 : 1)};
 `;
 
 const Label = styled(Animated.Text)`
   color: ${p => p.activeColor};
   font-weight: bold;
-  margin-left: ${p => (p.icon ? 8 : 0)};
+  margin-left: ${p => (p.icon ? 8 : 0)}px;
 `;
 
 const Dot = styled(Animated.View)`
   position: absolute;
-  top: ${p => p.topPadding};
-  width: ${p => p.width};
-  height: ${p => p.height};
-  border-radius: 100;
+  top: ${p => p.topPadding}px;
+  width: ${p => p.width}px;
+  height: ${p => p.height}px;
+  border-radius: 100px;
   background-color: ${p => p.activeTabBackground};
   z-index: -1;
 `;
@@ -255,16 +255,16 @@ const SHADOW = css`
   shadow-offset: 0px 5px;
   shadow-opacity: 0.05;
   elevation: 1;
-  shadow-radius: 20;
+  shadow-radius: 20px;
 `;
 
-// TabBar.propTypes = {
-//   activeTabBackground: PropTypes.string.isRequired,
-//   tabBarBackground: PropTypes.string.isRequired,
-//   shadow: PropTypes.bool.isRequired,
-//   verticalPadding: PropTypes.number.isRequired,
-//   topPadding: PropTypes.number.isRequired
-// };
+TabBar.propTypes = {
+  activeTabBackground: PropTypes.string.isRequired,
+  tabBarBackground: PropTypes.string.isRequired,
+  shadow: PropTypes.bool.isRequired,
+  verticalPadding: PropTypes.number.isRequired,
+  topPadding: PropTypes.number.isRequired
+};
 
 TabBar.defaultProps = {
   activeTabBackground: "#E4F7F7",

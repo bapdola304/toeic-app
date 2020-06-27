@@ -1,24 +1,13 @@
 import React from 'react';
 import { Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
-import Icon from 'react-native-vector-icons/Feather';
 import { StyleSheet } from 'react-native';
-
-
+import { ArrowIosBackIcon } from './Icon';
 
 export const HeaderNavigation = (props) => {
-    const { title = 'title', navigation } = props;
-    console.log('navigation', navigation);
-
-    const BackIcon = () => (
-        <Icon
-            name='chevron-left'
-            size={26}
-            color={'#ffffff'}
-        />
-    );
+    const { title = 'title' } = props;
 
     const BackAction = () => (
-        <TopNavigationAction icon={BackIcon} onPress={props.navigation.goBack} />
+        <TopNavigationAction icon={ArrowIosBackIcon} onPress={props.navigation.goBack} />
     );
 
     return (
