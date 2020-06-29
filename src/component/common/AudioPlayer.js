@@ -61,6 +61,37 @@ export default class AudioPlayer extends Component {
         });
     }
 
+    async UNSAFE_componentWillReceiveProps(nextProps) {
+        const { isPlay, source, isStop } = nextProps;
+        if (this.props.isPlay !== isPlay && source.uri !== '' && this.isStartFirstTime) {
+            this._onPlayPausePressed(); //start audio
+            this.isStartFirstTime = false;
+        }
+        if (this.props.isStop !== nextProps.isStop && isStop === true) {
+            this._onStopPressed(); // stop audio
+        }
+        if (this.props.source.uri !== nextProps.source.uri) {
+            this._onStopPressed();
+            await this.createAudio(source);
+            this._onPlayPausePressed();
+        }
+    }
+
+    createAudio = async (source) => {
+        const initialStatus = {
+            shouldPlay: false,
+            rate: this.state.rate,
+            volume: this.state.volume,
+        };
+        const { sound  } = await Audio.Sound.createAsync(
+            source,
+            initialStatus,
+            this._onPlaybackStatusUpdate
+        );
+        this.playbackInstance = sound;
+        this._updateScreenForLoading(false);
+    }
+
     async _loadNewPlaybackInstance(playing) {
         const { source } = this.props;
         if (this.playbackInstance != null) {
@@ -68,23 +99,9 @@ export default class AudioPlayer extends Component {
             this.playbackInstance.setOnPlaybackStatusUpdate(null);
             this.playbackInstance = null;
         }
-
-        // const source = { uri: source };
-        const initialStatus = {
-            shouldPlay: playing,
-            rate: this.state.rate,
-            volume: this.state.volume,
-        };
-
-        const { sound, status } = await Audio.Sound.create(
-            source,
-            initialStatus,
-            this._onPlaybackStatusUpdate
-        );
-        this.playbackInstance = sound;
-        this.isStartFirstTime && this._onPlayPausePressed(); // start audio
-        this.isStartFirstTime = false;
-        this._updateScreenForLoading(false);
+        if (source.uri !== '') {
+           this.createAudio(source)
+        }
     }
 
     _updateScreenForLoading(isLoading) {

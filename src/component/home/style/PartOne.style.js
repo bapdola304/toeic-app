@@ -10,6 +10,7 @@ export const PartOneStyles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 40,
         paddingVertical: 20,
+        height: '13%'
     },
     wrapTimer: {
         width: 70,
@@ -31,11 +32,13 @@ export const PartOneStyles = StyleSheet.create({
     },
     imagePartOne: {
         paddingHorizontal: 5,
+        height: '30%'
     },
     image: {
         width: '90%',
         marginLeft: '5%',
-        height: 250
+        height: '100%',
+        resizeMode: 'cover'
     },
     radio: {
         margin: 2,
@@ -48,18 +51,27 @@ export const PartOneStyles = StyleSheet.create({
         width: '44%'
     },
     wrapAnswer: {
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        marginTop: 10,
+        height: '55%',
+        paddingBottom: '28%'
     },
     groupRadio: {
-        flexDirection: 'row', flexWrap: 'wrap'
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginTop: 20
     },
     wrapBtnCheck: {
         position: 'absolute',
         bottom: 0,
         width: '100%'
     },
+    wrapBtn: {
+        backgroundColor: '#65C8D0',
+        borderRadius: 4,
+    },
     btnCheck: {
-        backgroundColor: '#65C8D0'
+        borderColor: '#65C8D0',
     },
     textAnswer: {
         fontSize: 18
@@ -73,5 +85,39 @@ export const PartOneStyles = StyleSheet.create({
         left: 20,
         color: '#000000',
         fontWeight: 'bold'
+    },
+    backdrop: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    textModal: {
+        fontSize: 20,
+        marginBottom: 10,
+        fontWeight: 'bold'
+    },
+    wrapAnsDes: {
+        paddingHorizontal: 10
+    },
+    wrapDesText: {
+        flexDirection: 'row',
+        marginTop: 10
+    },
+    keyQuestion: {
+        fontSize: 17
+    },
+    valueQuestion: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        width: '82%'
+    },
+    correctQuestion: {
+        color: '#49CC96'
+    },
+    inCorrectQuestion: {
+        color: '#ff0000bd'
+    },
+    wrapProcessbar: {
+        paddingHorizontal: 10,
+        marginTop: 10,
+        height: '2%'
     }
 })

@@ -29,3 +29,11 @@ export const RefreshIcon = (style) => (
   <Icon {...style} name='refresh-outline' />
 );
 
+export const NextIcon = (style) => (
+  <Icon {...style} name='arrow-circle-right-outline' />
+);
+
+export const FinishIcon = (style) => (
+  <Icon {...style} name='checkmark-circle-2-outline' />
+);
+
