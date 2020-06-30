@@ -24,7 +24,7 @@ class Menu extends Component {
                                     if (index % 2 == 0) {
                                         return (
                                             <View style={[MenuStyles.item]} key={item.id}>
-                                                <TouchableOpacity style={[MenuStyles.itemBtn]} onPress={this.props.onPress}>
+                                                <TouchableOpacity style={[MenuStyles.itemBtn]} onPress={() => this.props.onPress(item)}>
                                                     <View style={MenuStyles.imageBtn} source={item.image}>
                                                         <Text style={MenuStyles.itemTitle}>{item.title}</Text>
                                                         <Text style={MenuStyles.itemDesc}>{item.type} Course</Text>
@@ -44,7 +44,7 @@ class Menu extends Component {
                                     if (index % 2 == 1) {
                                         return (
                                             <View style={[MenuStyles.item]} key = {item.id}>
-                                                <TouchableOpacity style={[MenuStyles.itemBtn, { minHeight: 200 }]}>
+                                                <TouchableOpacity style={[MenuStyles.itemBtn, { minHeight: 200 }]} onPress={() => this.props.onPress(item)}>
                                                     <View style={MenuStyles.imageBtn} source={item.image}>
                                                         <Text style={MenuStyles.itemTitle}>{item.title}</Text>
                                                         <Text style={MenuStyles.itemDesc}>{item.type} Course</Text>

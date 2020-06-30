@@ -5,54 +5,91 @@ import { Colors } from '../../util/colors';
 import LANG from '../../language/vi';
 import ButtonCustom from '../common/ButtonCustom';
 import { HOME_NAV } from '../../util/navigationName';
+import { ResultStyles } from './style/Result.style';
 
 class ResultComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            score: 0,
+            totalQuestion: 0,
+            questionFinshed: 0,
+            partType: 'P1',
+            processState: 0,
+            isFinish: false
         };
+    }
+
+    componentDidMount() {
+        const data = this.props.route.params['result'];
+        console.log('data', data);
+        const { totalQuestion, partType, scrore } = data;
+        const questionFinshed = scrore / 10;
+        let processState = ((questionFinshed / totalQuestion) * 100);
+        const isFinish = questionFinshed === totalQuestion;
+        this.setState({
+            scrore,
+            partType,
+            totalQuestion,
+            questionFinshed,
+            processState,
+            isFinish
+        })
     }
 
     onGoHome = () => {
         this.props.navigation.navigate(HOME_NAV.HOME);
     }
 
+    renderMessage = () => {
+        const {
+            totalQuestion,
+            questionFinshed
+        } = this.state;
+        return `Bạn đã làm đúng ${questionFinshed}/${totalQuestion} câu`
+    }
+
     render() {
+        const {
+            scrore,
+            partType,
+            processState,
+            isFinish
+        } = this.state;
         return (
-            <View style={styles.container}>
-                <View style={styles.wrapResultText}>
-                    <Text style={styles.resultText}>Kết quả phần thi Part 1</Text>
+            <View style={ResultStyles.container}>
+                <View style={ResultStyles.wrapResultText}>
+                    <Text style={ResultStyles.resultText}>{`${LANG.HOME.RESULT.RESULT_TEXT} ${LANG.COMMON_TEXT[partType]}`}</Text>
                 </View>
-                <View style={styles.wrapContent}>
-                    <View style={styles.circleProcess}>
+                <View style={ResultStyles.wrapContent}>
+                    <View style={ResultStyles.circleProcess}>
                         <AnimatedCircularProgress
                             size={250}
                             width={30}
-                            fill={80}
-                            tintColor={'#00C139'}
-                            onAnimationComplete={() => console.log('onAnimationComplete')}
-                            backgroundColor="#3d5875"
-                            duration={2000}
+                            fill={processState}
+                            tintColor='#00C139'
+                            backgroundColor='#3d5875'
+                            duration={3000}
                         >
                             {
                                 (fill) => (
-                                    <View style={styles.wrapScore}>
-                                        <Text style={styles.keyScore}>{LANG.HOME.PART_ONE.SCORE}</Text>
-                                        <Text style={styles.valueScore}>{80}</Text>
+                                    <View style={ResultStyles.wrapScore}>
+                                        <Text style={ResultStyles.keyScore}>{LANG.HOME.PART_ONE.SCORE}</Text>
+                                        <Text style={ResultStyles.valueScore}>{scrore}</Text>
                                     </View>
                                 )
                             }
                         </AnimatedCircularProgress>
                     </View>
-                    <View style={styles.wrapTextNotify}>
-                        <Text style={styles.textNotify}>Bạn đã làm đúng 8/10 câu</Text>
-                        <Text style={styles.textNotify}>Lần sau cố gắng hơn nhé</Text>
+                    <View style={ResultStyles.wrapTextNotify}>
+                        <Text style={ResultStyles.textNotify}>{this.renderMessage()}</Text>
+                        <Text style={ResultStyles.textNotify}>{isFinish ? LANG.HOME.RESULT.CONGRATULATION : LANG.HOME.RESULT.TRY_HARDER}</Text>
                     </View>
-                    <View style={styles.btnGoHome}>
+                    <View style={ResultStyles.btnGoHome}>
                         <ButtonCustom
                             size='medium'
                             onPress={this.onGoHome}
-                            text={' Về trang chủ'}
+                            text={LANG.HOME.RESULT.GO_HOME}
                             color='#00C139'
                         />
                     </View>
@@ -61,54 +98,5 @@ class ResultComponent extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    wrapResultText: {
-        height: '40%',
-        backgroundColor: '#65C8D0',
-        justifyContent: 'flex-start',
-        alignItems: 'center'
-    },
-    resultText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#ffffff',
-        marginTop: '10%'
-    },
-    wrapContent: {
-        height: '82%',
-        backgroundColor: '#E6EE9B',
-        borderTopLeftRadius: 250,
-        borderTopRightRadius: 250,
-        top: '-22%',
-        justifyContent: 'flex-start',
-        alignItems: 'center'
-    },
-    circleProcess: {
-        marginTop: '10%'
-    },
-    wrapScore: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    keyScore: { fontSize: 30 },
-    valueScore: {
-        fontSize: 35,
-        fontWeight: 'bold'
-    },
-    wrapTextNotify: {
-        marginTop: '10%'
-    },
-    textNotify: {
-        fontSize: 20, textAlign: 'center'
-    },
-    btnGoHome: {
-        width: '80%',
-        marginTop: '5%'
-    }
-})
 
 export default ResultComponent;

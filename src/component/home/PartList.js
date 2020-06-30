@@ -7,17 +7,20 @@ import { PartListStyles } from './style/partList.style';
 const data = [{
     id: '1',
     title: 'Level 250 - 500',
-    time: 'Part 1'
+    time: 'Part 1',
+    level: 1
 },
 {
     id: '2',
     title: 'Level 500 - 750',
-    time: 'Part 1'
+    time: 'Part 1',
+    level: 2
 },
 {
     id: '3',
     title: 'Level 750 - 990',
-    time: 'Part 1'
+    time: 'Part 1',
+    level: 3
 }
 
 ]
@@ -44,7 +47,7 @@ class PartList extends Component {
                                         <Text style={PartListStyles.itemTime}>{item.time}</Text>
                                         <Text style={PartListStyles.itemTitle}>{item.title}</Text>
                                     </View>
-                                    <TouchableOpacity style={PartListStyles.itemPlayButton} onPress={this.props.onPress}>
+                                    <TouchableOpacity style={PartListStyles.itemPlayButton} onPress={() => this.props.onPress(item)}>
                                         <Icon
                                             name={'play'}
                                             size={24}

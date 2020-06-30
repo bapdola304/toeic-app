@@ -13,7 +13,7 @@ import ButtonCustom from '../../common/ButtonCustom';
 import { HOME_NAV } from '../../../util/navigationName';
 
 const barWidth = Dimensions.get('screen').width - 30;
-const timeOfQuestion = 30;
+const timeOfQuestion = 90;
 
 class PartOneComponent extends Component {
     constructor(props) {
@@ -124,7 +124,13 @@ class PartOneComponent extends Component {
     }
 
     onFinsh = () => {
-        this.props.navigation.navigate(HOME_NAV.RESULT);
+        let { totalQuestion, scrore } = this.state;
+        const result = {
+            totalQuestion,
+            scrore,
+            partType: 'P1'
+        }
+        this.props.navigation.navigate(HOME_NAV.RESULT, { result });
     }
 
     render() {
@@ -142,7 +148,6 @@ class PartOneComponent extends Component {
             scrore,
             isStop
         } = this.state;
-        console.log('timeOfQuestionState', timeOfQuestionState);
 
         return (
             <View style={PartOneStyles.container}>

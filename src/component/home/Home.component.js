@@ -35,8 +35,8 @@ export default class HomeComponent extends Component {
         );
     }
 
-    onPressItem = () => {
-        this.props.navigation.navigate(HOME_NAV.PART_DETAIl);
+    onPressItem = (item) => {
+        this.props.navigation.navigate(HOME_NAV.PART_DETAIl, { partType: item.type });
     }
 
     getAnimateValue = () => {

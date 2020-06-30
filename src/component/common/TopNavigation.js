@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     title: {
         color: '#ffffff',
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textTransform: 'uppercase'
     }
 })
