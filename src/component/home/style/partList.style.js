@@ -69,6 +69,8 @@ export const PartListStyles = StyleSheet.create({
     },
     des: {
         fontSize: 18,
-        color: Colors.black
+        color: Colors.black,
+        lineHeight: 25,
+        marginTop: 8
     }
 })

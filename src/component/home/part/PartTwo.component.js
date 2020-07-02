@@ -11,12 +11,14 @@ import { Colors } from '../../../util/colors';
 import { PartOneStyles } from '../style/PartOne.style';
 import ButtonCustom from '../../common/ButtonCustom';
 import { HOME_NAV } from '../../../util/navigationName';
-import { part1 } from '../../../util/mock_data';
+import partTwoImage from '../../../../assets/images/part2_detai.jpg'
+import { part2 } from '../../../util/mock_data';
+import { PartTwoStyles } from '../style/partTwo.style';
 
 const barWidth = Dimensions.get('screen').width - 30;
 const timeOfQuestion = 90;
 
-class PartOneComponent extends Component {
+class PartTwoComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,10 +28,10 @@ class PartOneComponent extends Component {
             timeOfQuestionState: timeOfQuestion,
             isPlay: false,
             showModal: true,
-            data: part1,
+            data: part2,
             question: {},
             countQuestion: 1,
-            totalQuestion: part1.length,
+            totalQuestion: part2.length,
             isShowDes: false,
             scrore: 0,
             isStop: false,
@@ -38,7 +40,7 @@ class PartOneComponent extends Component {
 
     UNSAFE_componentWillMount() {
         const { countQuestion, progressQuestion, totalQuestion } = this.state;
-        const question = part1[countQuestion - 1];
+        const question = part2[countQuestion - 1];
         let newProgressQuestion = progressQuestion + (100 / totalQuestion);
         this.setState({ question, progressQuestion: newProgressQuestion });
     }
@@ -59,9 +61,10 @@ class PartOneComponent extends Component {
 
     renderRadioButtonAnswer = () => {
         const { selectedAnswer } = this.state;
-        return optionAnswer.map((item, index) => {
+        const optionAnswerPartTwo = optionAnswer.slice(0, 3);
+        return optionAnswerPartTwo.map((item, index) => {
             return (
-                <Radio style={PartOneStyles.controlContainer} status='control' key={item}>
+                <Radio style={PartTwoStyles.radioButton} status='control' key={item}>
                     <Text style={[PartOneStyles.textAnswer, selectedAnswer === index && PartOneStyles.textAnswerSelected]}>{`${LANG.HOME.PART_ONE.OPTION} ${item}`}</Text>
                 </Radio>
             )
@@ -70,7 +73,8 @@ class PartOneComponent extends Component {
 
     renderAnswerDes = () => {
         const { question: { answers = [] }, selectedAnswer } = this.state;
-        return answers.map((ans, index) => {
+        const answersParTwo = answers.slice(1, 4);
+        return answersParTwo.map((ans, index) => {
             const { content = '', answer_id = '', correct } = ans;
             const isAnswerCorrect = correct === '1';
             const isAnswerSelectedInCorrect = !isAnswerCorrect && selectedAnswer === index;
@@ -94,7 +98,8 @@ class PartOneComponent extends Component {
 
     OnCheckAnswer = () => {
         let { question: { answers = [] }, selectedAnswer, scrore } = this.state;
-        const indexCorrect = answers.findIndex(ans => ans.correct === '1');
+        const answersParTwo = answers.slice(1, 4);
+        const indexCorrect = answersParTwo.findIndex(ans => ans.correct === '1');
         const isCorrect = indexCorrect === selectedAnswer;
         const newScore = isCorrect ? scrore += 10 : scrore;
         clearInterval(this.timer);
@@ -109,7 +114,7 @@ class PartOneComponent extends Component {
     onNextQuestion = () => {
         let { countQuestion, progressQuestion, totalQuestion } = this.state;
         const countQuestionTemp = countQuestion += 1;
-        const question = part1[countQuestionTemp - 1];
+        const question = part2[countQuestionTemp - 1];
         let newProgressQuestion = progressQuestion + (100 / totalQuestion);
         this.setState({
             question,
@@ -129,7 +134,7 @@ class PartOneComponent extends Component {
         const result = {
             totalQuestion,
             scrore,
-            partType: 'P1'
+            partType: 'P2'
         }
         this.props.navigation.navigate(HOME_NAV.RESULT, { result });
     }
@@ -143,7 +148,7 @@ class PartOneComponent extends Component {
             showModal,
             countQuestion,
             totalQuestion,
-            question: { image = '', audio = '' },
+            question: { image = '', audio = '', answers = [] },
             isShowDes,
             progressQuestion,
             scrore,
@@ -170,7 +175,7 @@ class PartOneComponent extends Component {
                         width={5}
                         fill={progressTimer}
                         tintColor={Colors.primaryColor}
-                        onAnimationComplete={() => console.log('onAnimationComplete')}
+                        // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#3d5875"
                     >
                         {
@@ -188,12 +193,16 @@ class PartOneComponent extends Component {
                     </View>
                 </View>
                 <View style={PartOneStyles.imagePartOne}>
-                    <Image source={{ uri: image }} style={PartOneStyles.image} />
+                    <Image source={partTwoImage} style={PartOneStyles.image} />
                 </View>
                 <View style={PartOneStyles.wrapAnswer}>
                     {
                         isShowDes ? (
                             <View style={PartOneStyles.wrapAnsDes}>
+                                <View style={PartOneStyles.wrapDesText}>
+                                    <Text style={[PartOneStyles.keyQuestion]}>{`Question: `}</Text>
+                                    <Text style={[PartOneStyles.valueQuestion]}>{answers[0].content}</Text>
+                                </View>
                                 <ScrollView>
                                     {this.renderAnswerDes()}
                                 </ScrollView>
@@ -203,7 +212,7 @@ class PartOneComponent extends Component {
                                 <RadioGroup
                                     selectedIndex={selectedAnswer}
                                     onChange={index => this.setSelectedIndex(index)}
-                                    style={PartOneStyles.groupRadio}
+                                    style={PartTwoStyles.groupRadio}
                                 >
                                     {this.renderRadioButtonAnswer()}
                                 </RadioGroup>
@@ -266,4 +275,4 @@ class PartOneComponent extends Component {
     }
 }
 
-export default PartOneComponent;
+export default PartTwoComponent;

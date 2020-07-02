@@ -21,7 +21,9 @@ export default LANG = {
     COMMON_TEXT: {
         P1: 'Part 1',
         PART_NAME: {
-            P1: 'Photographs'
-        }
+            P1: 'Mô tả ảnh',
+            P2: 'Hỏi - Đáp'
+        },
+        P2: 'Part 2'
     }
 }

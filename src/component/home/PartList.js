@@ -33,15 +33,16 @@ class PartList extends Component {
     }
 
     render() {
+        const { partDes: { title = '', des = '' } = {} } = this.props;
         return (
             <View style={PartListStyles.container}>
                 <View style={{ padding: 10 }}>
-                    <Text style={PartListStyles.heading}>TOEIC Listening Part 1</Text>
-                    <Text style={PartListStyles.des}>là nội dung nhìn tranh và miêu tả. Phần này gồm 10 bức tranh (đề mới: 6 bức tranh), mỗi bức tranh sẽ có 4 câu mô tả không được in trong đề. Nhiệm vụ của các bạn là nghe và chọn đáp án mô tả đúng bức tranh nhất.</Text>
+                    <Text style={PartListStyles.heading}>{title}</Text>
+                    <Text style={PartListStyles.des}>{des}</Text>
                     <ScrollView style={PartListStyles.list}>
                         {data.map(item => {
                             return (
-                                <View style={PartListStyles.item} key = {item.id}>
+                                <View style={PartListStyles.item} key={item.id}>
                                     <Text style={PartListStyles.numHead}>{'0' + item.id}</Text>
                                     <View style={PartListStyles.itemBody}>
                                         <Text style={PartListStyles.itemTime}>{item.time}</Text>

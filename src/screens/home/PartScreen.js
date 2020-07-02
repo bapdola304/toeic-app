@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { HeaderNavigation } from '../../component/common/TopNavigation';
 import PartOneComponent from '../../component/home/part/PartOne.component';
+import PartTwoComponent from '../../component/home/part/PartTwo.component';
 import { PART_TYPE } from '../../util/constant';
 import LANG from '../../language/vi';
 
@@ -17,7 +18,10 @@ class PartScreen extends Component {
         switch (partType) {
             case PART_TYPE.PART_ONE:
                 component = <PartOneComponent {...this.props} />
-                break;     
+                break;
+            case PART_TYPE.PART_TWO:
+                component = <PartTwoComponent {...this.props} />
+                break;
             default:
                 component = <PartOneComponent {...this.props} />
                 break;
@@ -30,7 +34,7 @@ class PartScreen extends Component {
         const { partType } = partData;
         return (
             <>
-                <HeaderNavigation {...this.props} title = {LANG.COMMON_TEXT[partType]}/>
+                <HeaderNavigation {...this.props} title={LANG.COMMON_TEXT[partType]} />
                 {this.renderPartComponent(partType)}
             </>
         );

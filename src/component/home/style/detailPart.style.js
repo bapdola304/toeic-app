@@ -12,10 +12,14 @@ export const DetailPartStyles = StyleSheet.create({
     header: {
         height: '30%'
     },
-    heading: {
+    P1: {
         fontSize: 25,
         fontWeight: 'bold',
-        marginTop: 10
+    },
+    P2: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginLeft: -150
     },
     wrapperBody: {
         flexDirection: 'row',
@@ -28,9 +32,14 @@ export const DetailPartStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    money1: {
+    P1: {
         fontSize: 20,
         fontWeight: 'bold',
+    },
+    P2: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: -150
     },
     bottom: {
         // position: 'absolute',
