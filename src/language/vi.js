@@ -22,8 +22,12 @@ export default LANG = {
         P1: 'Part 1',
         PART_NAME: {
             P1: 'Mô tả ảnh',
-            P2: 'Hỏi - Đáp'
+            P2: 'Hỏi - Đáp',
+            P3: 'Đoạn hội thoại',
+            P4: 'Bài nói ngắn'
         },
-        P2: 'Part 2'
+        P2: 'Part 2',
+        P3: 'Part 3',
+        P4: 'Part 4'
     }
 }

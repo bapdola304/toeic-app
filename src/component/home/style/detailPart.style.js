@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const DetailPartStyles = StyleSheet.create({
     background: {
         width: '100%',
-        height: 320,
+        height: '110%',
     },
     container:
     {
@@ -20,6 +20,16 @@ export const DetailPartStyles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         marginLeft: -150
+    },
+    P3: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: -190
+    },
+    P4: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#ffffff'
     },
     wrapperBody: {
         flexDirection: 'row',

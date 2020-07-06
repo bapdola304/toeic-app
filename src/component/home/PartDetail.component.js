@@ -3,6 +3,8 @@ import { Text, View, ImageBackground } from 'react-native';
 import PartList from './PartList';
 import part1Image from '../../../assets/images/photo.jpg';
 import part2Image from '../../../assets/images/part2.jpg';
+import part3Image from '../../../assets/images/part3.png';
+import part4Image from '../../../assets/images/part4.png';
 import { DetailPartStyles } from './style/detailPart.style';
 import { HOME_NAV } from '../../util/navigationName';
 import LANG from '../../language/vi';
@@ -43,6 +45,12 @@ class PartDetailComponent extends Component {
             case PART_TYPE.PART_TWO:
                 image = part2Image
                 break;
+            case PART_TYPE.PART_THREE:
+                image = part3Image
+                break;
+            case PART_TYPE.PART_FOUR:
+                image = part4Image
+                break;
             default:
                 image = part1Image
                 break;
@@ -53,13 +61,14 @@ class PartDetailComponent extends Component {
     render() {
         const partType = this.props.route.params['partType'];
         const { partDes } = this.state;
+        const isShowTitle = partType === 'P3';
         return (
             <View style={DetailPartStyles.container}>
                 <View style={DetailPartStyles.header}>
                     <ImageBackground resizeMode="cover" style={DetailPartStyles.background} source={this.renderImage()} >
                         <View style={DetailPartStyles.innerContainer}>
                             <View>
-                                <Text style={DetailPartStyles[partType]}>{LANG.COMMON_TEXT[partType]}</Text>
+                                <Text style={DetailPartStyles[partType]}>{!isShowTitle && LANG.COMMON_TEXT[partType]}</Text>
                             </View>
                             <View style={[DetailPartStyles.wrapperBody, { alignItems: 'flex-end' }]}>
                                 <Text style={DetailPartStyles[partType]}>{LANG.COMMON_TEXT.PART_NAME[partType]}</Text>
