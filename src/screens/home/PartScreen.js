@@ -4,9 +4,11 @@ import { HeaderNavigation } from '../../component/common/TopNavigation';
 import PartOneComponent from '../../component/home/part/PartOne.component';
 import PartTwoComponent from '../../component/home/part/PartTwo.component';
 import PartThreeComponent from '../../component/home/part/PartThree.component';
+import PartFiveComponent from '../../component/home/part/PartFive.component';
+import PartSixComponent from '../../component/home/part/PartSix.component';
 import { PART_TYPE } from '../../util/constant';
 import LANG from '../../language/vi';
-import { part3, part4 } from '../../util/mock_data';
+import { part3, part4, part5, part6 } from '../../util/mock_data';
 
 class PartScreen extends Component {
     constructor(props) {
@@ -29,6 +31,12 @@ class PartScreen extends Component {
                 break;
             case PART_TYPE.PART_FOUR:
                 component = <PartThreeComponent {...this.props} data={part4} />
+                break;
+            case PART_TYPE.PART_FIVE:
+                component = <PartFiveComponent {...this.props} data={part5} />
+                break;
+            case PART_TYPE.PART_SIX:
+                component = <PartSixComponent {...this.props} data={part6} />
                 break;
             default:
                 component = <PartOneComponent {...this.props} />

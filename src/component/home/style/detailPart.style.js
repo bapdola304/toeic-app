@@ -31,6 +31,18 @@ export const DetailPartStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#ffffff'
     },
+    P5: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: 90,
+        marginTop: -2
+    },
+    P6: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: 40,
+        marginTop: 20
+    },
     wrapperBody: {
         flexDirection: 'row',
         paddingVertical: 10

@@ -13,19 +13,24 @@ import ButtonCustom from '../../common/ButtonCustom';
 import { HOME_NAV } from '../../../util/navigationName';
 import { PartTwoStyles } from '../style/partTwo.style';
 import { PartThreeStyles } from '../style/partThree.style';
+import { PartFiveStyles } from '../style/partFive.style';
+import { PartSixStyles } from '../style/partSix.style';
 
 const barWidth = Dimensions.get('screen').width - 30;
 const timeOfQuestion = 90;
 
-class PartThreeComponent extends Component {
+class PartSixComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
             progressQuestion: 0,
-            selectedAnswer: 0,
+            selectedAnswer: {
+                1: 0,
+                2: 0,
+                3: 0,
+            },
             progressTimer: 0,
             timeOfQuestionState: timeOfQuestion,
-            isPlay: false,
             showModal: false,
             data: [],
             question: {},
@@ -33,12 +38,6 @@ class PartThreeComponent extends Component {
             totalQuestion: 0,
             isShowDes: false,
             scrore: 0,
-            isStop: false,
-            selectedAnswer: {
-                1: 0,
-                2: 0,
-                3: 0,
-            }
         };
     }
 
@@ -101,29 +100,22 @@ class PartThreeComponent extends Component {
 
     setShowModal = () => {
         this.countDown();
-        this.setState((prevState) => ({ showModal: !prevState.showModal, isPlay: !prevState.isPlay }));
+        this.setState((prevState) => ({ showModal: !prevState.showModal }));
     }
 
     OnCheckAnswer = () => {
         let { question: { answers = [] }, selectedAnswer, scrore } = this.state;
-        // const questionList = question.slice(1, 5);
-        // const indexCorrect = answersParTwo.findIndex(ans => ans.correct === '1');
-        // const isCorrect = indexCorrect === selectedAnswer;
-        // const newScore = isCorrect ? scrore += 10 : scrore;
         const checkScore = answers.map((item, index) => {
             const questionList = item.slice(1, 5);
             const indexCorrect = questionList.findIndex(ans => ans.correct === '1');
             return selectedAnswer[index + 1] === indexCorrect;
         });
-        console.log(checkScore);
         const score = checkScore.filter(item => item === true );
         const newScore = scrore += (score.length * 10);
         clearInterval(this.timer);
         this.setState({
             isShowDes: true,
-            isPlay: false,
             scrore: newScore,
-            isStop: true
         });
     }
 
@@ -142,10 +134,8 @@ class PartThreeComponent extends Component {
                 3: 0,
             },
             progressQuestion: newProgressQuestion,
-            isPlay: true,
             progressTimer: 0,
             timeOfQuestionState: timeOfQuestion,
-            isStop: false
         }, () => this.countDown());
     }
 
@@ -165,9 +155,9 @@ class PartThreeComponent extends Component {
             const questionListItem = question.slice(1, 5);
             const questionIndexSelected = quetionIndex + 1;
             return (
-                <View style={{ paddingHorizontal: 8 }}>
+                <View style={{ paddingHorizontal: 8, marginTop: 10 }}>
                     <View>
-                        <Text style={PartThreeStyles.questionText}>{question.length && question[0].content}</Text>
+                        <Text style={PartThreeStyles.questionText}>{`${LANG.HOME.PART_ONE.OPTION} ${quetionIndex + 1}`}</Text>
                     </View>
                     <View>
                         <RadioGroup
@@ -183,29 +173,27 @@ class PartThreeComponent extends Component {
         })
     }
 
-    renderConversation = () => {
-        const { question: { conversation = [] } = {} } = this.state;
-        return Array.isArray(conversation) ? conversation.map(cvs => (
-            <Text style={{ paddingHorizontal: 16, fontSize: 17 }}>{cvs}</Text>
-        ))
-            : (
-                <Text style={{ paddingHorizontal: 16, fontSize: 17 }}>{conversation}</Text>
-            )
+    renderParagraph = () => {
+        const { question: { answers = [], conversation = '' } = {} } = this.state;
+        console.log('conversation', conversation);
+        
+        return (
+            <View>
+                <Text style={PartThreeStyles.questionText}>{conversation}</Text>
+            </View>
+        )
     }
 
     render() {
         const {
             progressTimer,
             timeOfQuestionState,
-            isPlay,
             showModal,
             countQuestion,
             totalQuestion,
-            question: { audio = '', answers = [] },
             isShowDes,
             progressQuestion,
             scrore,
-            isStop
         } = this.state;
 
         return (
@@ -245,19 +233,17 @@ class PartThreeComponent extends Component {
                         <Text style={PartOneStyles.valueTimer}>{scrore}</Text>
                     </View>
                 </View>
-                <View style={PartThreeStyles.wrapQuestion}>
-                    {isShowDes && this.renderConversation()}
+                <View style={PartSixStyles.paragraph}>
+                    <ScrollView>
+                        {this.renderParagraph()}
+                    </ScrollView>
+                </View>
+                <View style={PartSixStyles.wrapAnswer}>
                     <ScrollView>
                         {this.renderQuestion()}
                     </ScrollView>
                 </View>
                 <View style={PartOneStyles.wrapBtnCheck}>
-                    <AudioPlayer
-                        source={{ uri: audio }}
-                        navigation={this.props.navigation}
-                        isPlay={isPlay}
-                        isStop={isStop}
-                    />
                     {
                         isShowDes ? (
                             progressQuestion >= 100 ? (
@@ -307,4 +293,4 @@ class PartThreeComponent extends Component {
     }
 }
 
-export default PartThreeComponent;
+export default PartSixComponent;

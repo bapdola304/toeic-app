@@ -24,10 +24,14 @@ export default LANG = {
             P1: 'Mô tả ảnh',
             P2: 'Hỏi - Đáp',
             P3: 'Đoạn hội thoại',
-            P4: 'Bài nói ngắn'
+            P4: 'Bài nói ngắn',
+            P5: 'Câu chưa hoàn thành',
+            P6: 'Hoàn chỉnh đoạn văn'
         },
         P2: 'Part 2',
         P3: 'Part 3',
-        P4: 'Part 4'
+        P4: 'Part 4',
+        P5: 'Part 5',
+        P6: 'Part 6'
     }
 }

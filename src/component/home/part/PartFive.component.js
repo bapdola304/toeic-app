@@ -13,6 +13,7 @@ import ButtonCustom from '../../common/ButtonCustom';
 import { HOME_NAV } from '../../../util/navigationName';
 import { PartTwoStyles } from '../style/partTwo.style';
 import { PartThreeStyles } from '../style/partThree.style';
+import { PartFiveStyles } from '../style/partFive.style';
 
 const barWidth = Dimensions.get('screen').width - 30;
 const timeOfQuestion = 90;
@@ -34,11 +35,6 @@ class PartThreeComponent extends Component {
             isShowDes: false,
             scrore: 0,
             isStop: false,
-            selectedAnswer: {
-                1: 0,
-                2: 0,
-                3: 0,
-            }
         };
     }
 
@@ -65,19 +61,19 @@ class PartThreeComponent extends Component {
         }, 1000);
     }
 
-    renderRadioButtonAnswer = (questionListItem, questionIndexSelected) => {
+    renderRadioButtonAnswer = (answers) => {
         const { selectedAnswer, isShowDes } = this.state;
-        return questionListItem.map((question, index) => {
+        return answers.map((question, index) => {
             const { content = '', correct = '0' } = question;
             const isAnswerCorrect = correct === '1';
-            const isAnswerSelectedInCorrect = !isAnswerCorrect && selectedAnswer[questionIndexSelected] === index;
+            const isAnswerSelectedInCorrect = !isAnswerCorrect && selectedAnswer === index;
             return (
                 <Radio style={PartThreeStyles.radioButton} status='control' key={index} disabled={isShowDes}>
                     <Text
                         style={
                             [
                                 PartOneStyles.textAnswer,
-                                selectedAnswer[questionIndexSelected] === index && PartOneStyles.textAnswerSelected,
+                                selectedAnswer === index && PartOneStyles.textAnswerSelected,
                                 isShowDes && isAnswerCorrect && PartThreeStyles.correctQuestion,
                                 isShowDes && isAnswerSelectedInCorrect && PartOneStyles.inCorrectQuestion
                             ]
@@ -90,13 +86,8 @@ class PartThreeComponent extends Component {
         })
     }
 
-    setSelectedIndex = (index, quetionIndex) => {
-        const { selectedAnswer } = this.state;
-        const newSelectedAnswer = {
-            ...selectedAnswer,
-            [quetionIndex]: index
-        }
-        this.setState({ selectedAnswer: newSelectedAnswer });
+    setSelectedIndex = (index) => {
+        this.setState({ selectedAnswer: index });
     }
 
     setShowModal = () => {
@@ -106,24 +97,13 @@ class PartThreeComponent extends Component {
 
     OnCheckAnswer = () => {
         let { question: { answers = [] }, selectedAnswer, scrore } = this.state;
-        // const questionList = question.slice(1, 5);
-        // const indexCorrect = answersParTwo.findIndex(ans => ans.correct === '1');
-        // const isCorrect = indexCorrect === selectedAnswer;
-        // const newScore = isCorrect ? scrore += 10 : scrore;
-        const checkScore = answers.map((item, index) => {
-            const questionList = item.slice(1, 5);
-            const indexCorrect = questionList.findIndex(ans => ans.correct === '1');
-            return selectedAnswer[index + 1] === indexCorrect;
-        });
-        console.log(checkScore);
-        const score = checkScore.filter(item => item === true );
-        const newScore = scrore += (score.length * 10);
+        const indexCorrect = answers[0].findIndex(ans => ans.correct === '1');
+        const isCorrect = indexCorrect === selectedAnswer;
+        const newScore = isCorrect ? scrore += 10 : scrore;
         clearInterval(this.timer);
         this.setState({
-            isShowDes: true,
-            isPlay: false,
             scrore: newScore,
-            isStop: true
+            isShowDes: true
         });
     }
 
@@ -136,11 +116,7 @@ class PartThreeComponent extends Component {
             question,
             countQuestion: countQuestionTemp,
             isShowDes: false,
-            selectedAnswer: {
-                1: 0,
-                2: 0,
-                3: 0,
-            },
+            selectedAnswer: 0,
             progressQuestion: newProgressQuestion,
             isPlay: true,
             progressTimer: 0,
@@ -160,52 +136,35 @@ class PartThreeComponent extends Component {
     }
 
     renderQuestion = () => {
-        const { question: { answers = [] }, selectedAnswer } = this.state;
-        return answers.map((question, quetionIndex) => {
-            const questionListItem = question.slice(1, 5);
-            const questionIndexSelected = quetionIndex + 1;
-            return (
-                <View style={{ paddingHorizontal: 8 }}>
-                    <View>
-                        <Text style={PartThreeStyles.questionText}>{question.length && question[0].content}</Text>
-                    </View>
-                    <View>
-                        <RadioGroup
-                            selectedIndex={selectedAnswer[questionIndexSelected]}
-                            onChange={index => this.setSelectedIndex(index, questionIndexSelected)}
-                            style={PartTwoStyles.groupRadio}
-                        >
-                            {this.renderRadioButtonAnswer(questionListItem, questionIndexSelected)}
-                        </RadioGroup>
-                    </View>
+        const { question: { answers = [], conversation = '' } = {}, selectedAnswer } = this.state;
+        return (
+            <View style={{ paddingHorizontal: 8 }}>
+                <View>
+                    <Text style={PartThreeStyles.questionText}>{conversation}</Text>
                 </View>
-            )
-        })
-    }
-
-    renderConversation = () => {
-        const { question: { conversation = [] } = {} } = this.state;
-        return Array.isArray(conversation) ? conversation.map(cvs => (
-            <Text style={{ paddingHorizontal: 16, fontSize: 17 }}>{cvs}</Text>
-        ))
-            : (
-                <Text style={{ paddingHorizontal: 16, fontSize: 17 }}>{conversation}</Text>
-            )
+                <View>
+                    <RadioGroup
+                        selectedIndex={selectedAnswer}
+                        onChange={index => this.setSelectedIndex(index)}
+                        style={PartTwoStyles.groupRadio}
+                    >
+                        {this.renderRadioButtonAnswer(answers[0])}
+                    </RadioGroup>
+                </View>
+            </View>
+        )
     }
 
     render() {
         const {
             progressTimer,
             timeOfQuestionState,
-            isPlay,
             showModal,
             countQuestion,
             totalQuestion,
-            question: { audio = '', answers = [] },
             isShowDes,
             progressQuestion,
             scrore,
-            isStop
         } = this.state;
 
         return (
@@ -245,19 +204,12 @@ class PartThreeComponent extends Component {
                         <Text style={PartOneStyles.valueTimer}>{scrore}</Text>
                     </View>
                 </View>
-                <View style={PartThreeStyles.wrapQuestion}>
-                    {isShowDes && this.renderConversation()}
+                <View style={PartFiveStyles.wrapQuestion}>
                     <ScrollView>
                         {this.renderQuestion()}
                     </ScrollView>
                 </View>
                 <View style={PartOneStyles.wrapBtnCheck}>
-                    <AudioPlayer
-                        source={{ uri: audio }}
-                        navigation={this.props.navigation}
-                        isPlay={isPlay}
-                        isStop={isStop}
-                    />
                     {
                         isShowDes ? (
                             progressQuestion >= 100 ? (

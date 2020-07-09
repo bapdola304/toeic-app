@@ -16,7 +16,17 @@ export const partDetailData = [
     },
     {
         partType: 'P4',
-        title: 'TOEIC Listening Part 4',
+        title: 'TOEIC Reading Part 4',
         des: 'Phần nghe của TOEIC Part 4 chia làm 30 câu hỏi, tương đương với 10 bài nói. Đặc điểm của bài nói này là chỉ có một người nói, một giọng đọc xuyên suốt và thường liên quan đến các chủ đề quen thuộc trong đời sống hằng ngày nên rất dễ để nghe và xác định đáp án đúng.'
+    },
+    {
+        partType: 'P5',
+        title: 'TOEIC Reading Part 5',
+        des: 'Trong phần thi TOEIC PART 5 các bạn sẽ phải đối mặt với 40 câu trắc nghiệm từ câu 100 đến câu 140, thường được phân chia thành 11-13 câu hỏi về từ vựng, 12-13 câu hỏi về từ loại và 14-16 câu hỏi xoay quanh các chủ đề khác nhau. Các em cần dựa vào khả năng đọc hiểu và vốn kiến thức ngữ pháp và từ vựng để chọn ra đáp án đúng nhất.'
+    },
+    {
+        partType: 'P6',
+        title: 'TOEIC Reading Part 6',
+        des: 'Part 6 của đề thi TOEIC có tổng cộng 12 câu trắc nghiệm, được chia làm 4 đoạn văn, mỗi đoạn sẽ có 3 vị trí trống, và nhiệm vụ của người học là chọn đáp án đúng để điền vào ô trống đó. Tương ứng với mỗi chỗ trống các bạn sẽ có 4 đáp án để lựa chọn.'
     }
 ]

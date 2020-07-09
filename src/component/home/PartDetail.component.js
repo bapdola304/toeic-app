@@ -5,6 +5,8 @@ import part1Image from '../../../assets/images/photo.jpg';
 import part2Image from '../../../assets/images/part2.jpg';
 import part3Image from '../../../assets/images/part3.png';
 import part4Image from '../../../assets/images/part4.png';
+import part5Image from '../../../assets/images/part5.png';
+import part6Image from '../../../assets/images/part6.png';
 import { DetailPartStyles } from './style/detailPart.style';
 import { HOME_NAV } from '../../util/navigationName';
 import LANG from '../../language/vi';
@@ -51,6 +53,12 @@ class PartDetailComponent extends Component {
             case PART_TYPE.PART_FOUR:
                 image = part4Image
                 break;
+            case PART_TYPE.PART_FIVE:
+                image = part5Image
+                break;
+            case PART_TYPE.PART_SIX:
+                image = part6Image
+                break;
             default:
                 image = part1Image
                 break;
@@ -61,7 +69,7 @@ class PartDetailComponent extends Component {
     render() {
         const partType = this.props.route.params['partType'];
         const { partDes } = this.state;
-        const isShowTitle = partType === 'P3';
+        const isShowTitle = partType === 'P3' || partType === 'P5';
         return (
             <View style={DetailPartStyles.container}>
                 <View style={DetailPartStyles.header}>
