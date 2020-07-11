@@ -36,34 +36,36 @@ class PartList extends Component {
         const { partDes: { title = '', des = '' } = {} } = this.props;
         return (
             <View style={PartListStyles.container}>
-                <View style={{ padding: 10 }}>
-                    <Text style={PartListStyles.heading}>{title}</Text>
-                    <Text style={PartListStyles.des}>{des}</Text>
-                    <ScrollView style={PartListStyles.list}>
-                        {data.map(item => {
-                            return (
-                                <View style={PartListStyles.item} key={item.id}>
-                                    <Text style={PartListStyles.numHead}>{'0' + item.id}</Text>
-                                    <View style={PartListStyles.itemBody}>
-                                        <Text style={PartListStyles.itemTime}>{item.time}</Text>
-                                        <Text style={PartListStyles.itemTitle}>{item.title}</Text>
+                <ScrollView>
+                    <View style={{ padding: 10 }}>
+                        <Text style={PartListStyles.heading}>{title}</Text>
+                        <Text style={PartListStyles.des}>{des}</Text>
+                        <View style={PartListStyles.list}>
+                            {data.map(item => {
+                                return (
+                                    <View style={PartListStyles.item} key={item.id}>
+                                        <Text style={PartListStyles.numHead}>{'0' + item.id}</Text>
+                                        <View style={PartListStyles.itemBody}>
+                                            <Text style={PartListStyles.itemTime}>{item.time}</Text>
+                                            <Text style={PartListStyles.itemTitle}>{item.title}</Text>
+                                        </View>
+                                        <TouchableOpacity style={PartListStyles.itemPlayButton} onPress={() => this.props.onPress(item)}>
+                                            <Icon
+                                                name={'play'}
+                                                size={24}
+                                                color={"#ffffff"}
+                                                fill
+                                            />
+                                        </TouchableOpacity>
                                     </View>
-                                    <TouchableOpacity style={PartListStyles.itemPlayButton} onPress={() => this.props.onPress(item)}>
-                                        <Icon
-                                            name={'play'}
-                                            size={24}
-                                            color={"#ffffff"}
-                                            fill
-                                        />
-                                    </TouchableOpacity>
-                                </View>
-                            )
-                        })}
-                    </ScrollView>
-                </View>
-                <View style={PartListStyles.bottomContainer}>
+                                )
+                            })}
+                        </View>
+                    </View>
+                    <View style={PartListStyles.bottomContainer}>
 
-                </View>
+                    </View>
+                </ScrollView>
             </View>
         );
     }

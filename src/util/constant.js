@@ -5,4 +5,5 @@ export const PART_TYPE = {
     PART_FOUR: 'P4',
     PART_FIVE: 'P5',
     PART_SIX: 'P6',
+    PART_SEVEN: 'P7',
 }

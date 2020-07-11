@@ -28,5 +28,10 @@ export const partDetailData = [
         partType: 'P6',
         title: 'TOEIC Reading Part 6',
         des: 'Part 6 của đề thi TOEIC có tổng cộng 12 câu trắc nghiệm, được chia làm 4 đoạn văn, mỗi đoạn sẽ có 3 vị trí trống, và nhiệm vụ của người học là chọn đáp án đúng để điền vào ô trống đó. Tương ứng với mỗi chỗ trống các bạn sẽ có 4 đáp án để lựa chọn.'
+    },
+    {
+        partType: 'P7',
+        title: 'TOEIC Reading Part 7',
+        des: "Cấu trúc của part 7 gồm 2 phần: \n  - Single passage: Đoạn đơn 28 câu, đề thi có thể có từ 7 - 10 đoạn văn đơn, hết mỗi đoạn văn sẽ có 2 - 4 câu hỏi. \n - Double passage: Đoạn kép 20 câu \n Trong phần này sẽ có từ 4 cặp đoạn văn, hết mỗi cặp đoạn văn sẽ có 5 câu hỏi. Trọng tâm chủ yếu của part 7 tập trung vào các chủ đề như email, thư xin việc, memo trong công ty, advertisement (quảng cáo bán hàng sản phẩm), place an order (đơn đặt hàng sản phẩm), schedule (lịch trình), news (tin tức)."
     }
 ]

@@ -1708,3 +1708,572 @@ export const part6 = [
       ]
   }
 ]
+
+export const part7 = [
+  {
+      "question_id": "120410",
+      "answers": [
+          [
+              {
+                  "answer_id": "685369",
+                  "content": "A751. What should you do if want to attend the event?",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685370",
+                  "content": " Put your house on the market",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685371",
+                  "content": "Send in some money",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685372",
+                  "content": "Call Ms. Ortiz",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685373",
+                  "content": "Make a reservation",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685374",
+                  "content": "A751. What kind of event does it advertise?",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685375",
+                  "content": "An estate sale",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685376",
+                  "content": " A party",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685377",
+                  "content": "A lecture",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685378",
+                  "content": "A competition",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685379",
+                  "content": "A751. Who is this notice aimed at?",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685380",
+                  "content": "Real estate agents ",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685381",
+                  "content": "Home owners",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685382",
+                  "content": "Researchers",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685383",
+                  "content": "Marketing experts",
+                  "question_id": "120410",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ]
+      ],
+      "conversation": [
+          "\r\n Are you getting ready to put your house on the market?",
+          "\r\n Are you thinking of selling it yourself?",
+          "\r\n Don’t do it on your own!\r\n\r\n Research has shown that on the average real estate agents get a 30% higher sales price on single-family homes than owners who try to do the selling themselves.",
+          "\r\n ",
+          "\r\n Come learn the ins and outs of the real estate market and how to get the best possible price for your house. On Friday, January 20 at 7:30 P.M. Ms. Miranda Ortiz, a real estate agent with over twenty years’ experience in the field, will talk about the current competitive real estate family home or apartment. A question and answer session will follow the talk and refreshments will be served. Admission to this event is free, but because of the high level of interest. Reservations are required.\r\n\r\n ",
+          "\r\n Please call Mr. Jones at",
+          "\r\n 676 555 0944 to reserve your space\r\n"
+      ]
+  },
+  {
+      "question_id": "120411",
+      "answers": [
+          [
+              {
+                  "answer_id": "685384",
+                  "content": "A752. What will happen if you return a product before thirty days have passed?",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685385",
+                  "content": "The company will ask you some questions",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685386",
+                  "content": "A customer service representative will call you",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685387",
+                  "content": "You will get all your money back",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685388",
+                  "content": "You will have to send in a new purchase order",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685389",
+                  "content": "A752. What should you do to return a product the day after receiving it?",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685390",
+                  "content": "Repack it and mail it back",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685391",
+                  "content": " Wait for thirty days",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685392",
+                  "content": "Call the customer service office",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685393",
+                  "content": "Order a new catalog",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685394",
+                  "content": "A752. The word “condition” in line 6 is closest in meaning to",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685395",
+                  "content": "Fitness",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685396",
+                  "content": "Appearance",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685397",
+                  "content": "State",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685398",
+                  "content": "Shipment",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685399",
+                  "content": "A752. Where would you find these instructions?",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685400",
+                  "content": "In a catalog",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685401",
+                  "content": "Enclosed in a package",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685402",
+                  "content": "Hanging up in a post office",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685403",
+                  "content": "At a store",
+                  "question_id": "120411",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ]
+      ],
+      "conversation": [
+          "\r\n Thank you for buying a product from the Office Ware mail-order catalog. We hope you are satisfied with your purchase of our quality merchandise. Please examine the contents of this package immediately to make sure that your order has arrived complete and in undamaged condition. In the event that you are not totally satisfied with your purchase for any reason, you can return it to us within thirty days for a full refund, no questions asked. Just repack it in the same box you received it in, and apply the enclosed return shipping label to the outside of the box. Return postage will be paid by the customer. If you wish to return a product after thirty days from the purchase date, please call the customer service office at 800 555 1002 and ask to speak with a purchase order representative.\r\n"
+      ]
+  },
+  {
+      "question_id": "120412",
+      "answers": [
+          [
+              {
+                  "answer_id": "685404",
+                  "content": "A753. Who wrote the letter?",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685405",
+                  "content": "A tour participant",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685406",
+                  "content": "A travel agency employee",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685407",
+                  "content": " A hotel employee",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685408",
+                  "content": "The tour leader",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685409",
+                  "content": "A753. The word “distributed” in paragraph 2, line 4, is closest in meaning to",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685410",
+                  "content": "Disturbed",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685411",
+                  "content": "Revised",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685412",
+                  "content": "Itemized",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685413",
+                  "content": "Sent around",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685414",
+                  "content": "A753. When will Mr. and Mrs. Thomas find out the complete tour schedule?",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685415",
+                  "content": " It is enclosed with the leader",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685416",
+                  "content": "During dinner at the hotel restaurant",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685417",
+                  "content": "When they check in at the hotel",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685418",
+                  "content": "They already know it",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ],
+          [
+              {
+                  "answer_id": "685419",
+                  "content": "A753. When should Mr. and Mrs. Thomas tell the hotel if they want to change their room reservation?",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "1",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685420",
+                  "content": "As soon as they arrive at the hotel",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685421",
+                  "content": "When the tour leader arrives at the hotel",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              },
+              {
+                  "answer_id": "685422",
+                  "content": "Before they arrive at the hotel",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "1"
+              },
+              {
+                  "answer_id": "685423",
+                  "content": "After all the tour participants have arrived at the hotel",
+                  "question_id": "120412",
+                  "sound": null,
+                  "images": null,
+                  "parent": "0",
+                  "correct": "0"
+              }
+          ]
+      ],
+      "conversation": [
+          "\r\n World travel tour",
+          "\r\n 32 Palm Tree Biulevard",
+          "\r\n Playa del Coco, Floria, 39539",
+          "\r\n Mr. and Mrs. Ivan Thoms",
+          "\r\n 78 Putnam Street",
+          "\r\n River City, New York, 10131",
+          "\r\n ",
+          "\r\n Dear Mr. and Mrs. Thomas,",
+          "\r\n ",
+          "\r\n Thank you for joining the World Travel tour to Emerald Island. We look forward to seeing you at the Ocean Breezes Hotel on April 2. At your request we have reserved for you an ocean view room with twin beds. Please notify hotel staff in advance of your arrival if you wish to make any changes in this room arrangement.",
+          "\r\n ",
+          "\r\n When you check in at hotel, mention that you are a participant in the World Travel tour and the staff will inform the tour leader of your arrival. Tour participants will gather in the Ocean Breezes restaurant at 6:30 for dinner and a chance to meet each other. A complete itinerary for the tour will be distributed at that time. The tour leader will explain the tour activities and you will have the opportunity to ask questions.",
+          "\r\n ",
+          "\r\n Your hotel room and three meals a day at the hotel restaurant are included in the price of the tour. The cost of transportation between the airport and the hotel will be paid by the individual participants. I have enclosed some informational brochures that may be of interest to you. Please don’t hesitate to contact me if you have any questions.",
+          "\r\n ",
+          "\r\n Sincerely,",
+          "\r\n George Harris",
+          "\r\n Assistant Director of Tours",
+          "\r\n Encl. Emerald Island Airport shuttle Schedule",
+          "\r\n Your Guide to Emerald Island\r\n"
+      ]
+  }
+]

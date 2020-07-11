@@ -43,6 +43,12 @@ export const DetailPartStyles = StyleSheet.create({
         marginLeft: 40,
         marginTop: 20
     },
+    P7: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: -140,
+        marginTop: 20
+    },
     wrapperBody: {
         flexDirection: 'row',
         paddingVertical: 10

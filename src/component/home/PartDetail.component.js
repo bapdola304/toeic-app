@@ -7,6 +7,7 @@ import part3Image from '../../../assets/images/part3.png';
 import part4Image from '../../../assets/images/part4.png';
 import part5Image from '../../../assets/images/part5.png';
 import part6Image from '../../../assets/images/part6.png';
+import part7Image from '../../../assets/images/part7.png';
 import { DetailPartStyles } from './style/detailPart.style';
 import { HOME_NAV } from '../../util/navigationName';
 import LANG from '../../language/vi';
@@ -58,6 +59,9 @@ class PartDetailComponent extends Component {
                 break;
             case PART_TYPE.PART_SIX:
                 image = part6Image
+                break;
+            case PART_TYPE.PART_SEVEN:
+                image = part7Image
                 break;
             default:
                 image = part1Image

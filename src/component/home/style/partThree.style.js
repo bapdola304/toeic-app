@@ -7,7 +7,7 @@ export const PartThreeStyles = StyleSheet.create({
         fontWeight: 'bold'
     },
     wrapQuestion: {
-        height: '58%'
+        height: '64%'
     },
     radioButton: {
         borderRadius: 20,

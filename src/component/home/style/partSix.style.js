@@ -6,7 +6,7 @@ export const PartSixStyles = StyleSheet.create({
         marginTop: 10
     },
     wrapAnswer: {
-        height: '40%',
+        height: '46%',
         marginTop: 10,
         paddingBottom: '5%',
         borderTopWidth: 2,

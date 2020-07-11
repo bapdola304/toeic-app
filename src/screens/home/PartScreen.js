@@ -8,7 +8,7 @@ import PartFiveComponent from '../../component/home/part/PartFive.component';
 import PartSixComponent from '../../component/home/part/PartSix.component';
 import { PART_TYPE } from '../../util/constant';
 import LANG from '../../language/vi';
-import { part3, part4, part5, part6 } from '../../util/mock_data';
+import { part3, part4, part5, part6, part7 } from '../../util/mock_data';
 
 class PartScreen extends Component {
     constructor(props) {
@@ -37,6 +37,9 @@ class PartScreen extends Component {
                 break;
             case PART_TYPE.PART_SIX:
                 component = <PartSixComponent {...this.props} data={part6} />
+                break;
+            case PART_TYPE.PART_SEVEN:
+                component = <PartSixComponent {...this.props} data={part7} isPart7 = {true} />
                 break;
             default:
                 component = <PartOneComponent {...this.props} />

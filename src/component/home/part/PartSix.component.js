@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, ScrollView } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { Radio, RadioGroup, Card, Modal } from '@ui-kitten/components';
-import AudioPlayer from '../../common/AudioPlayer';
-import ProgressBarAnimated from 'react-native-progress-bar-animated';
 import { CheckIcon, NextIcon, FinishIcon } from '../../common/Icon';
 import { optionAnswer } from '../../../util/common';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import LANG from '../../../language/vi';
-import { Colors } from '../../../util/colors';
 import { PartOneStyles } from '../style/PartOne.style';
 import ButtonCustom from '../../common/ButtonCustom';
 import { HOME_NAV } from '../../../util/navigationName';
 import { PartTwoStyles } from '../style/partTwo.style';
 import { PartThreeStyles } from '../style/partThree.style';
-import { PartFiveStyles } from '../style/partFive.style';
 import { PartSixStyles } from '../style/partSix.style';
+import PartHeader from '../../common/PartHeader';
 
-const barWidth = Dimensions.get('screen').width - 30;
 const timeOfQuestion = 90;
 
 class PartSixComponent extends Component {
@@ -151,13 +146,15 @@ class PartSixComponent extends Component {
 
     renderQuestion = () => {
         const { question: { answers = [] }, selectedAnswer } = this.state;
+        const { isPart7 = false } = this.props;
         return answers.map((question, quetionIndex) => {
             const questionListItem = question.slice(1, 5);
             const questionIndexSelected = quetionIndex + 1;
+            const { content: questionText = '' } = question[0] || [];
             return (
                 <View style={{ paddingHorizontal: 8, marginTop: 10 }}>
                     <View>
-                        <Text style={PartThreeStyles.questionText}>{`${LANG.HOME.PART_ONE.OPTION} ${quetionIndex + 1}`}</Text>
+                        <Text style={PartThreeStyles.questionText}>{`${LANG.HOME.PART_ONE.OPTION} ${quetionIndex + 1}: ${isPart7 && questionText}`}</Text>
                     </View>
                     <View>
                         <RadioGroup
@@ -174,9 +171,7 @@ class PartSixComponent extends Component {
     }
 
     renderParagraph = () => {
-        const { question: { answers = [], conversation = '' } = {} } = this.state;
-        console.log('conversation', conversation);
-        
+        const { question: { conversation = '' } = {} } = this.state;        
         return (
             <View>
                 <Text style={PartThreeStyles.questionText}>{conversation}</Text>
@@ -197,42 +192,15 @@ class PartSixComponent extends Component {
         } = this.state;
 
         return (
-            <View style={PartOneStyles.container}>
-                <View style={PartOneStyles.wrapProcessbar}>
-                    <ProgressBarAnimated
-                        width={barWidth}
-                        value={progressQuestion > 100 ? 100 : progressQuestion}
-                        backgroundColorOnComplete={Colors.primaryColor}
-                        backgroundColor={Colors.primaryColor}
-                        height={20}
-                        borderRadius={10}
-                        borderColor={Colors.primaryColor}
-                    />
-                    <Text style={PartOneStyles.numberOfQuestion}>{`câu ${countQuestion}/${totalQuestion}`}</Text>
-                </View>
-                <View style={PartOneStyles.header}>
-                    <AnimatedCircularProgress
-                        size={70}
-                        width={5}
-                        fill={progressTimer}
-                        tintColor={Colors.primaryColor}
-                        // onAnimationComplete={() => console.log('onAnimationComplete')}
-                        backgroundColor="#3d5875"
-                    >
-                        {
-                            (fill) => (
-                                <View style={PartOneStyles.wrapTimer}>
-                                    <Text style={PartOneStyles.textTimer}>{LANG.HOME.PART_ONE.SECOND}</Text>
-                                    <Text style={PartOneStyles.valueTimer}>{timeOfQuestionState < 0 ? 0 : timeOfQuestionState}</Text>
-                                </View>
-                            )
-                        }
-                    </AnimatedCircularProgress>
-                    <View style={PartOneStyles.wrapTimer}>
-                        <Text style={PartOneStyles.textTimer}>{LANG.HOME.PART_ONE.SCORE}</Text>
-                        <Text style={PartOneStyles.valueTimer}>{scrore}</Text>
-                    </View>
-                </View>
+            <View style={PartOneStyles.container}>              
+               <PartHeader
+                    progressQuestion = {progressQuestion}
+                    countQuestion = {countQuestion}
+                    totalQuestion = {totalQuestion}
+                    timeOfQuestionState = {timeOfQuestionState}
+                    progressTimer = {progressTimer}
+
+                 />
                 <View style={PartSixStyles.paragraph}>
                     <ScrollView>
                         {this.renderParagraph()}

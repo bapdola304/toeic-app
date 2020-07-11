@@ -7,10 +7,10 @@ export const PartOneStyles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal: 40,
-        paddingVertical: 20,
-        height: '13%'
+        justifyContent: 'center',
+        paddingHorizontal: 10,
+        alignItems: 'center',
+        height: '11%'
     },
     wrapTimer: {
         width: 70,
@@ -21,6 +21,9 @@ export const PartOneStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: '#65C8D0'
+    },
+    wrapTime: {
+        width: '20%'
     },
     textTimer: {
         fontSize: 12,
@@ -117,7 +120,6 @@ export const PartOneStyles = StyleSheet.create({
     },
     wrapProcessbar: {
         paddingHorizontal: 10,
-        marginTop: 10,
-        height: '2%'
+        width: '80%'
     }
 })

@@ -26,12 +26,14 @@ export default LANG = {
             P3: 'Đoạn hội thoại',
             P4: 'Bài nói ngắn',
             P5: 'Câu chưa hoàn thành',
-            P6: 'Hoàn chỉnh đoạn văn'
+            P6: 'Hoàn chỉnh đoạn văn',
+            P7: 'Đọc hiểu'
         },
         P2: 'Part 2',
         P3: 'Part 3',
         P4: 'Part 4',
         P5: 'Part 5',
-        P6: 'Part 6'
+        P6: 'Part 6',
+        P7: 'Part 7'
     }
 }
