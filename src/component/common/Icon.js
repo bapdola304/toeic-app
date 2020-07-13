@@ -37,3 +37,6 @@ export const FinishIcon = (style) => (
   <Icon {...style} name='checkmark-circle-2-outline' />
 );
 
+export const MenuBarIcon = (style) => (
+  <Icon {...style} name='bar-chart-outline' />
+);

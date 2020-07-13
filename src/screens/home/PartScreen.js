@@ -6,8 +6,9 @@ import PartTwoComponent from '../../component/home/part/PartTwo.component';
 import PartThreeComponent from '../../component/home/part/PartThree.component';
 import PartFiveComponent from '../../component/home/part/PartFive.component';
 import PartSixComponent from '../../component/home/part/PartSix.component';
-import { PART_TYPE } from '../../util/constant';
+import { PART_TYPE, PART_API } from '../../util/constant';
 import LANG from '../../language/vi';
+import { apiCommon } from '../../apiCaller/api';
 import { part3, part4, part5, part6, part7 } from '../../util/mock_data';
 
 class PartScreen extends Component {
@@ -15,6 +16,12 @@ class PartScreen extends Component {
         super(props);
         this.state = {
         };
+    }
+
+    async componentDidMount() {
+        const partData = this.props.route.params['partData'];
+        const { partType = 'P1', level = 1 } = partData;
+        const data = await apiCommon(`${PART_API[partType]}/${level}`);
     }
 
     renderPartComponent = (partType) => {

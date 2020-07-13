@@ -7,3 +7,13 @@ export const PART_TYPE = {
     PART_SIX: 'P6',
     PART_SEVEN: 'P7',
 }
+
+export const PART_API = {
+   P1: 'part1',
+   P2: 'part2',
+   P3: 'part3',
+   P4: 'part4',
+   P5: 'part5',
+   P6: 'part6',
+   P7: 'part7'
+}

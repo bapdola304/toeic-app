@@ -5,6 +5,7 @@ import { Layout, Text } from '@ui-kitten/components';
 import TabBar from "../component/common/TabBar";
 import Icon from 'react-native-vector-icons/Feather';
 import { HomePageNavigator } from './stack/home';
+import { MainHomeNavigator } from './stack/mainHome';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 const ROOT_ROUTES = ['Home', 'Blogs', 'Account'];
@@ -69,7 +70,7 @@ const TabNavigator = () => {
       }}>
       <Screen
         name='Home'
-        component={OrdersScreen}
+        component={MainHomeNavigator}
         options={tabBarIconCommon('home')}
       />
       <Screen
