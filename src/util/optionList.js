@@ -37,3 +37,25 @@ export const menuList = [
         type: 'P7',
     }
 ]
+
+
+export const levelPart = [
+    {
+        id: '1',
+        title: 'Level 250 - 500',
+        time: 'Part 1',
+        level: 1
+    },
+    {
+        id: '2',
+        title: 'Level 500 - 750',
+        time: 'Part 1',
+        level: 2
+    },
+    {
+        id: '3',
+        title: 'Level 750 - 990',
+        time: 'Part 1',
+        level: 3
+    }
+]

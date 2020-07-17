@@ -10,25 +10,38 @@ import { PART_TYPE, PART_API } from '../../util/constant';
 import LANG from '../../language/vi';
 import { apiCommon } from '../../apiCaller/api';
 import { part3, part4, part5, part6, part7 } from '../../util/mock_data';
+import PartStorage from '../../storage/part.storage';
+import { filterDataExist } from '../../util/common';
 
 class PartScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            data: []
         };
     }
 
     async componentDidMount() {
+        this.handleSetData();
+    }
+
+    handleSetData = async () => {
         const partData = this.props.route.params['partData'];
         const { partType = 'P1', level = 1 } = partData;
-        const data = await apiCommon(`${PART_API[partType]}/${level}`);
+        const part1Data = await apiCommon(`${PART_API[partType]}/${level}`);
+        const PartStorageInfo = await PartStorage.getPartOneInfo() || [];
+        const { items = [] } = part1Data;
+        const dataFiltered = filterDataExist(items, PartStorageInfo);
+        const randomData = dataFiltered.slice(0, 10);
+        this.setState({ data: randomData });
     }
 
     renderPartComponent = (partType) => {
+        const { data } = this.state;
         let component = null;
         switch (partType) {
             case PART_TYPE.PART_ONE:
-                component = <PartOneComponent {...this.props} />
+                component = <PartOneComponent {...this.props} data = {data}/>
                 break;
             case PART_TYPE.PART_TWO:
                 component = <PartTwoComponent {...this.props} />

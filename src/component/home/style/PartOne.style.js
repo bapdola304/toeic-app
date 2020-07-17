@@ -121,5 +121,11 @@ export const PartOneStyles = StyleSheet.create({
     wrapProcessbar: {
         paddingHorizontal: 10,
         width: '80%'
+    },
+    btnBottom: {
+        width: '50%',
+        height: 15,
+        marginLeft: '25%',
+        marginTop: 2
     }
 })

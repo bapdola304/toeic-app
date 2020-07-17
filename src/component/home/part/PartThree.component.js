@@ -112,7 +112,6 @@ class PartThreeComponent extends Component {
             const indexCorrect = questionList.findIndex(ans => ans.correct === '1');
             return selectedAnswer[index + 1] === indexCorrect;
         });
-        console.log(checkScore);
         const score = checkScore.filter(item => item === true);
         const newScore = scrore += (score.length * 10);
         clearInterval(this.timer);

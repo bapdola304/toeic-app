@@ -22,7 +22,6 @@ class ResultComponent extends Component {
 
     componentDidMount() {
         const data = this.props.route.params['result'];
-        console.log('data', data);
         const { totalQuestion, partType, scrore } = data;
         const questionFinshed = scrore / 10;
         let processState = ((questionFinshed / totalQuestion) * 100);

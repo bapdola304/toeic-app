@@ -10,6 +10,7 @@ import ButtonCustom from '../../common/ButtonCustom';
 import { HOME_NAV } from '../../../util/navigationName';
 import { part1 } from '../../../util/mock_data';
 import PartHeader from '../../common/PartHeader';
+import PartStorage from '../../../storage/part.storage';
 
 const timeOfQuestion = 90;
 
@@ -22,22 +23,41 @@ class PartOneComponent extends Component {
             progressTimer: 0,
             timeOfQuestionState: timeOfQuestion,
             isPlay: false,
-            showModal: false,
-            data: part1,
+            showModal: true,
+            data: [],
             question: {},
             countQuestion: 1,
-            totalQuestion: part1.length,
+            totalQuestion: 0,
             isShowDes: false,
             scrore: 0,
             isStop: false,
         };
+        this.getData = true;
     }
 
     UNSAFE_componentWillMount() {
-        const { countQuestion, progressQuestion, totalQuestion } = this.state;
-        const question = part1[countQuestion - 1];
+        // const { data } = this.props;
+        // const { countQuestion, progressQuestion } = this.state;
+        // const totalQuestion = data.length;
+        // const question = data[countQuestion - 1];
+        // let newProgressQuestion = progressQuestion + (100 / totalQuestion);
+        // this.setState({ question, progressQuestion: newProgressQuestion, totalQuestion, data });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { data } = nextProps;
+        if (data.length && this.getData) {
+            this.handleGetData(data);
+        }
+    }
+
+    handleGetData = (data) => {
+        const { countQuestion, progressQuestion } = this.state;
+        const totalQuestion = data.length;
+        const question = data[countQuestion - 1];
         let newProgressQuestion = progressQuestion + (100 / totalQuestion);
-        this.setState({ question, progressQuestion: newProgressQuestion });
+        this.getData = false;
+        this.setState({ question, progressQuestion: newProgressQuestion, totalQuestion, data });
     }
 
     countDown = () => {
@@ -89,11 +109,12 @@ class PartOneComponent extends Component {
         this.setState((prevState) => ({ showModal: !prevState.showModal, isPlay: !prevState.isPlay }));
     }
 
-    OnCheckAnswer = () => {
-        let { question: { answers = [] }, selectedAnswer, scrore } = this.state;
+    OnCheckAnswer = async () => {
+        let { question: { answers = [], question_id = '', level = 1 } = {}, selectedAnswer, scrore } = this.state;
         const indexCorrect = answers.findIndex(ans => ans.correct === '1');
         const isCorrect = indexCorrect === selectedAnswer;
         const newScore = isCorrect ? scrore += 10 : scrore;
+        this.handleSaveQuestionId(question_id, level);
         clearInterval(this.timer);
         this.setState({
             isShowDes: true,
@@ -103,10 +124,20 @@ class PartOneComponent extends Component {
         });
     }
 
+    handleSaveQuestionId = async (question_id, level) => {
+        const PartStorageInfo = await PartStorage.getPartOneInfo() || [];
+        const data = {
+            level,
+            question_id
+        }
+        const newPartStorage = [...PartStorageInfo, data];
+        PartStorage.setPartOneInfo(newPartStorage);
+    }
+
     onNextQuestion = () => {
-        let { countQuestion, progressQuestion, totalQuestion } = this.state;
+        let { countQuestion, progressQuestion, totalQuestion, data } = this.state;
         const countQuestionTemp = countQuestion += 1;
-        const question = part1[countQuestionTemp - 1];
+        const question = data[countQuestionTemp - 1];
         let newProgressQuestion = progressQuestion + (100 / totalQuestion);
         this.setState({
             question,
@@ -140,25 +171,23 @@ class PartOneComponent extends Component {
             showModal,
             countQuestion,
             totalQuestion,
-            question: { image = '', audio = '' },
+            question: { images = '', audio = '' } = {},
             isShowDes,
             progressQuestion,
-            scrore,
             isStop
         } = this.state;
-
         return (
             <View style={PartOneStyles.container}>
                 <PartHeader
-                    progressQuestion = {progressQuestion}
-                    countQuestion = {countQuestion}
-                    totalQuestion = {totalQuestion}
-                    timeOfQuestionState = {timeOfQuestionState}
-                    progressTimer = {progressTimer}
+                    progressQuestion={progressQuestion}
+                    countQuestion={countQuestion}
+                    totalQuestion={totalQuestion}
+                    timeOfQuestionState={timeOfQuestionState}
+                    progressTimer={progressTimer}
 
-                 />
+                />
                 <View style={PartOneStyles.imagePartOne}>
-                    <Image source={{ uri: image }} style={PartOneStyles.image} />
+                    <Image source={{ uri: images }} style={PartOneStyles.image} />
                 </View>
                 <View style={PartOneStyles.wrapAnswer}>
                     {
@@ -195,6 +224,7 @@ class PartOneComponent extends Component {
                                     accessoryRight={FinishIcon}
                                     onPress={this.onFinsh}
                                     text={LANG.HOME.PART_ONE.FINISH}
+                                    style = {PartOneStyles.btnBottom}
                                 />
                             )
                                 : (
@@ -203,6 +233,7 @@ class PartOneComponent extends Component {
                                         accessoryRight={NextIcon}
                                         onPress={this.onNextQuestion}
                                         text={LANG.HOME.PART_ONE.NEXT_QUESTION}
+                                        style = {PartOneStyles.btnBottom}
                                     />
                                 )
                         )
@@ -212,6 +243,7 @@ class PartOneComponent extends Component {
                                     accessoryLeft={CheckIcon}
                                     onPress={this.OnCheckAnswer}
                                     text={LANG.HOME.PART_ONE.CHECK_ANSWER}
+                                    style = {PartOneStyles.btnBottom}
                                 />
                             )
                     }

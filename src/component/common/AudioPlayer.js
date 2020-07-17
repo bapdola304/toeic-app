@@ -38,7 +38,7 @@ export default class AudioPlayer extends Component {
             rate: 1.0,
             portrait: null,
         };
-        this.isStartFirstTime = true;
+        this.isStartFirstTime = false;
     }
 
     componentDidMount() {
@@ -63,9 +63,8 @@ export default class AudioPlayer extends Component {
 
     async UNSAFE_componentWillReceiveProps(nextProps) {
         const { isPlay, source, isStop } = nextProps;
-        if (this.props.isPlay !== isPlay && source.uri !== '' && this.isStartFirstTime) {
+        if (this.props.isPlay !== isPlay && source.uri !== '') {
             this._onPlayPausePressed(); //start audio
-            this.isStartFirstTime = false;
         }
         if (this.props.isStop !== nextProps.isStop && isStop === true) {
             this._onStopPressed(); // stop audio
@@ -73,7 +72,8 @@ export default class AudioPlayer extends Component {
         if (this.props.source.uri !== nextProps.source.uri) {
             this._onStopPressed();
             await this.createAudio(source);
-            this._onPlayPausePressed();
+            this.isStartFirstTime && this._onPlayPausePressed();
+            this.isStartFirstTime = true;
         }
     }
 

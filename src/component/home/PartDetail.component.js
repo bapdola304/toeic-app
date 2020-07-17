@@ -90,7 +90,7 @@ class PartDetailComponent extends Component {
                 </View>
 
                 <View style={DetailPartStyles.bottom}>
-                    <PartList onPress={this.onPressItem} partDes={partDes} />
+                    <PartList onPress={this.onPressItem} partDes={partDes} partType = {partType}/>
                 </View>
             </View>
         );
