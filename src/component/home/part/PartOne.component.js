@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Radio, RadioGroup, Card, Modal } from '@ui-kitten/components';
 import AudioPlayer from '../../common/AudioPlayer';
 import { CheckIcon, NextIcon, FinishIcon } from '../../common/Icon';
@@ -11,6 +11,8 @@ import { HOME_NAV } from '../../../util/navigationName';
 import { part1 } from '../../../util/mock_data';
 import PartHeader from '../../common/PartHeader';
 import PartStorage from '../../../storage/part.storage';
+import { translateApi } from '../../../apiCaller/api';
+import translateIcon from '../../../../assets/icon/translate.png';
 
 const timeOfQuestion = 90;
 
@@ -31,6 +33,12 @@ class PartOneComponent extends Component {
             isShowDes: false,
             scrore: 0,
             isStop: false,
+            translate: {
+                0: null,
+                1: null,
+                2: null,
+                3: null
+            }
         };
         this.getData = true;
     }
@@ -85,16 +93,37 @@ class PartOneComponent extends Component {
         })
     }
 
+    handleTranslate = async (text, quetionIndex) => {
+        const { result } = await translateApi(`translate/single/${text}`);
+        const { translate } = this.state;
+        const newTranslate = {
+            ...translate,
+            [quetionIndex]: result
+        }
+        this.setState({ translate: newTranslate });
+    }
+
     renderAnswerDes = () => {
-        const { question: { answers = [] }, selectedAnswer } = this.state;
-        return answers.map((ans, index) => {
+        const { question: { answers = [] } = {}, selectedAnswer, translate } = this.state;
+        return answers.length && answers.map((ans, index) => {
             const { content = '', answer_id = '', correct } = ans;
             const isAnswerCorrect = correct === '1';
             const isAnswerSelectedInCorrect = !isAnswerCorrect && selectedAnswer === index;
             return (
-                <View style={PartOneStyles.wrapDesText} key={answer_id}>
-                    <Text style={[PartOneStyles.keyQuestion, isAnswerSelectedInCorrect && PartOneStyles.inCorrectQuestion, isAnswerCorrect && PartOneStyles.correctQuestion]}>{`Câu ${optionAnswer[index]}: `}</Text>
-                    <Text style={[PartOneStyles.valueQuestion, isAnswerSelectedInCorrect && PartOneStyles.inCorrectQuestion, isAnswerCorrect && PartOneStyles.correctQuestion]}>{content}</Text>
+                <View key={answer_id}>
+                    <View style={PartOneStyles.wrapDesText}>
+                        <Text style={[PartOneStyles.keyQuestion, isAnswerSelectedInCorrect && PartOneStyles.inCorrectQuestion, isAnswerCorrect && PartOneStyles.correctQuestion]}>{`Câu ${optionAnswer[index]}: `}</Text>
+                        <Text style={[PartOneStyles.valueQuestion, isAnswerSelectedInCorrect && PartOneStyles.inCorrectQuestion, isAnswerCorrect && PartOneStyles.correctQuestion]}>{content}</Text>
+                        <TouchableOpacity onPress={() => this.handleTranslate(content, index)}>
+                            <Image source={translateIcon} style={PartOneStyles.transIcon} />
+                        </TouchableOpacity>
+                    </View>
+                    {
+                        translate[index] && <View style={PartOneStyles.wrapTranslateText}>
+                            <Text style={PartOneStyles.keyTranslate}>{`Dịch ${optionAnswer[index]}: `}</Text>
+                            <Text style={PartOneStyles.valueTranslate}>{translate[index]}</Text>
+                        </View>
+                    }
                 </View>
             )
         })
@@ -148,7 +177,13 @@ class PartOneComponent extends Component {
             isPlay: true,
             progressTimer: 0,
             timeOfQuestionState: timeOfQuestion,
-            isStop: false
+            isStop: false,
+            translate: {
+                0: null,
+                1: null,
+                2: null,
+                3: null
+            }
         }, () => this.countDown());
     }
 
@@ -224,7 +259,7 @@ class PartOneComponent extends Component {
                                     accessoryRight={FinishIcon}
                                     onPress={this.onFinsh}
                                     text={LANG.HOME.PART_ONE.FINISH}
-                                    style = {PartOneStyles.btnBottom}
+                                    style={PartOneStyles.btnBottom}
                                 />
                             )
                                 : (
@@ -233,7 +268,7 @@ class PartOneComponent extends Component {
                                         accessoryRight={NextIcon}
                                         onPress={this.onNextQuestion}
                                         text={LANG.HOME.PART_ONE.NEXT_QUESTION}
-                                        style = {PartOneStyles.btnBottom}
+                                        style={PartOneStyles.btnBottom}
                                     />
                                 )
                         )
@@ -243,7 +278,7 @@ class PartOneComponent extends Component {
                                     accessoryLeft={CheckIcon}
                                     onPress={this.OnCheckAnswer}
                                     text={LANG.HOME.PART_ONE.CHECK_ANSWER}
-                                    style = {PartOneStyles.btnBottom}
+                                    style={PartOneStyles.btnBottom}
                                 />
                             )
                     }

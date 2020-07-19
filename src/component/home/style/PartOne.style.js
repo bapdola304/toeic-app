@@ -56,7 +56,7 @@ export const PartOneStyles = StyleSheet.create({
     wrapAnswer: {
         paddingHorizontal: 10,
         marginTop: 10,
-        height: '55%',
+        height: '60%',
         paddingBottom: '28%'
     },
     groupRadio: {
@@ -102,7 +102,8 @@ export const PartOneStyles = StyleSheet.create({
     },
     wrapDesText: {
         flexDirection: 'row',
-        marginTop: 10
+        marginTop: 10,
+        // flexWrap: 'wrap',
     },
     keyQuestion: {
         fontSize: 17
@@ -110,7 +111,7 @@ export const PartOneStyles = StyleSheet.create({
     valueQuestion: {
         fontSize: 17,
         fontWeight: 'bold',
-        width: '82%'
+        width: '76%'
     },
     correctQuestion: {
         color: '#49CC96'
@@ -127,5 +128,19 @@ export const PartOneStyles = StyleSheet.create({
         height: 15,
         marginLeft: '25%',
         marginTop: 2
+    },
+    wrapTranslateText: {
+        flexDirection: 'row'
+    },
+    keyTranslate: {
+        fontSize: 14,
+    },
+    valueTranslate: {
+        width: '78%',
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+    transIcon: {
+        width: 24, height: 24
     }
 })
